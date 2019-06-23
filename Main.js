@@ -16,6 +16,20 @@ const request = require('request');
 //logs that the bot is logged in
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+
+    request({
+      method: 'POST',
+      uri: 'https://us.battle.net/oauth/token',
+      client_id: '1efce137bf124d2fa09f6caa809b6228',
+      client_secret: '7t8JGF9k73LNMz9XyviyPMiHaFQVEdoo'
+    }, function(error, response, body) {
+      if(error){console.log(error)}
+      console.log(body)}
+    );
+
+    request('https://us.api.blizzard.com/wow/character/Darkspear/Tankadinn?locale=en_US&access_token=USmq2wyVx6hUO2Vm7ZGKwarSLVZTBU01cd', { json: true }, (err, res, body) => {
+    if (err) { return console.log(err); }
+    console.log(body);});
   });
 
   //what happens when a message is received

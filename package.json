@@ -12,6 +12,7 @@
     "blizzard.js": "^3.0.0",
     "discord.js": "^11.5.1",
     "jquery": "^3.4.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "simple-oauth2": "^2.2.1"
   }
 }
