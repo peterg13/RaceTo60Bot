@@ -2,35 +2,24 @@
 
 //the file that contains the bot's Discord token (this file is in gitignore)
 var discordAuth = require("./discordAuth.json");
-//the file that contains the bots Blizzard ID and Secret
-var blizzardAuth = require("./blizzardAuth.json");
 
-//necessary import needed for Discord
+
+//necessary import needed for DiscordAPI
 const Discord = require('discord.js');
-
+//import for my own Blizzard API
+const Blizzard = require('./blizzardAPI.js');
+console.log(Blizzard.getToken());
 //user client used to run commands
 const client = new Discord.Client();
 
 const request = require('request');
 
+
+
 //logs that the bot is logged in
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-
-    request({
-      method: 'POST',
-      uri: 'https://us.battle.net/oauth/token',
-      client_id: '1efce137bf124d2fa09f6caa809b6228',
-      client_secret: '7t8JGF9k73LNMz9XyviyPMiHaFQVEdoo'
-    }, function(error, response, body) {
-      if(error){console.log(error)}
-      console.log(body)}
-    );
-
-    request('https://us.api.blizzard.com/wow/character/Darkspear/Tankadinn?locale=en_US&access_token=USmq2wyVx6hUO2Vm7ZGKwarSLVZTBU01cd', { json: true }, (err, res, body) => {
-    if (err) { return console.log(err); }
-    console.log(body);});
-  });
+});
 
   //what happens when a message is received
 client.on('message', message => {
