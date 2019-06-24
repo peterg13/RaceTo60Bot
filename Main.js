@@ -1,7 +1,7 @@
 //documentation: https://discord.js.org/#/docs/main/stable/general/welcome
 
 //the file that contains the bot's Discord token (this file is in gitignore)
-// var discordAuth = require("./discordAuth.json");
+var discordAuth = require("./discordAuth.json");
 //the file that contains the bots Blizzard ID and Secret
 var blizzardAuth = require("./blizzardAuth.json");
 
@@ -36,4 +36,4 @@ client.on("message", message => {
 });
 
 //logs the client in
-// client.login(discordAuth.token);
+client.login(discordAuth.token);
