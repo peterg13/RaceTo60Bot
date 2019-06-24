@@ -1,21 +1,53 @@
 class Blizzard {
-    credentials = {
-        client: {
-            id: '',
-            secret: ''
-        },
-        auth: {
-            tokenHost: ""
-        }
+  // in order to declare class properties here you need to use a babel transpiler or typescript transpiler on top of javascript
+  // currently unsupported in plain ES6 I suppose.
+  constructor(ID, secret) {
+    // but you can do it down here just fine
+    this.credentials = {
+      client: {
+        id: "",
+        secret: ""
+      },
+      auth: {
+        tokenHost: ""
+      }
     };
-    constructor(ID, secret){
-        this.credentials.client.id = ID;
-        this.credentials.client.secret = secret;
-        this.credentials.auth.tokenHost = "https://us.battle.net";
-    };
+    this.credentials.client.id = ID;
+    this.credentials.client.secret = secret;
+    this.credentials.auth.tokenHost = "https://us.battle.net";
+  }
 
-    
-/*
+  /* ####### TYPESCRIPT EXAMPLE #################### */
+
+  // if you were to use typescript for some reason your class might look like this
+
+  //   interface IClient{
+  //     id: string;
+  //     secret: string;
+  //   }
+
+  //   interface IAuth{
+  //       tokenHost: string
+  //   }
+
+  //   interface ICredentials{
+  //     client: IClient;
+  //     auth: IAuth
+  //   }
+
+  //   class Blizzard{
+  //     credentials: ICredentials
+
+  //     constructor(ID, secret){
+  //         this.credentials.client.id = ID;
+  //         this.credentials.client.secret = secret;
+  //         this.credentials.auth.tokenHost = "https://us.battle.net";
+  //     }
+  //   }
+
+  /* ######### END TYPESCRIPT EXAMPLE ################## */
+
+  /*
     const credentials = {
         client: {
         id: blizzardAuth.ID,
@@ -48,6 +80,6 @@ class Blizzard {
         }
     };
     */
-};
+}
 
 module.exports = Blizzard;
