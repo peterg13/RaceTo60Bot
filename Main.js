@@ -2,15 +2,18 @@
 
 //the file that contains the bot's Discord token (this file is in gitignore)
 var discordAuth = require("./discordAuth.json");
-
+//the file that contains the bots Blizzard ID and Secret
+var blizzardAuth = require("./blizzardAuth.json");
 
 //necessary import needed for DiscordAPI
 const Discord = require('discord.js');
-//import for my own Blizzard API
-const Blizzard = require('./blizzardAPI.js');
-console.log(Blizzard.getToken());
-//user client used to run commands
+//Discord user client used to run commands
 const client = new Discord.Client();
+//import for my own Blizzard API
+var Blizzard = require('./blizzardAPI.js');
+//Referance to our Blizzard API to request from Blizzard
+var armory = new Blizzard(blizzardAuth.ID, blizzardAuth.Secret);
+
 
 const request = require('request');
 
