@@ -1,14 +1,15 @@
 class Blizzard {
-    credentials = {
-        client: {
-            id: '',
-            secret: ''
-        },
-        auth: {
-            tokenHost: ""
-        }
-    };
+    
     constructor(ID, secret){
+        this.credentials = {
+            client: {
+                id: '',
+                secret: ''
+            },
+            auth: {
+                tokenHost: ""
+            }
+        };
         this.credentials.client.id = ID;
         this.credentials.client.secret = secret;
         this.credentials.auth.tokenHost = "https://us.battle.net";
