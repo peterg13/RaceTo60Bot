@@ -16,6 +16,8 @@ var armory = new Blizzard(blizzardAuth.ID, blizzardAuth.Secret);
 //used to make a request from Blizzards API
 const request = require('request');
 
+console.log(armory.getToken());
+
 
 
 //logs that the bot is logged in

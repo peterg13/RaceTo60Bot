@@ -1,3 +1,5 @@
+const Promise = require("bluebird");
+
 class Blizzard {
     
     constructor(ID, secret){
@@ -13,42 +15,32 @@ class Blizzard {
         this.credentials.client.id = ID;
         this.credentials.client.secret = secret;
         this.credentials.auth.tokenHost = "https://us.battle.net";
-    };
 
-    
-/*
-    const credentials = {
-        client: {
-        id: blizzardAuth.ID,
-        secret: blizzardAuth.Secret
-        },
-        auth: {
-        tokenHost: "https://us.battle.net"
-        }
+        this.oauth2 = require("simple-oauth2").create(this.credentials);
+        this.token = null;
     };
     
     
-    const oauth2 = require("simple-oauth2").create(credentials);
-    let token = null;
     
-    
-    
-    function getToken(){
-        if (token === null || token.expired()) {
-            oauth2.clientCredentials
+    getMyToken(){
+        if (this.token === null || this.token.expired()) {
+            return this.oauth2.clientCredentials
             .getToken()
-            .then(oauth2.accessToken.create)
+            .then(this.oauth2.accessToken.create)
             .then(t => {
-                token = t;
-                console.log(t);
+                this.token = t;
                 return t.token.access_token;
             });
             }  
         else{
-            return token.token.access_token;
+            return Promise.resolve(this.token.token.access_token);
         }
     };
-    */
+
+    getToken(){
+        return this.getMyToken().then(this.token);
+    };
+    
 };
 
 module.exports = Blizzard;
