@@ -13,9 +13,10 @@ const client = new Discord.Client();
 var Blizzard = require('./blizzardAPI.js');
 //Referance to our Blizzard API to request from Blizzard
 var armory = new Blizzard(blizzardAuth.ID, blizzardAuth.Secret);
-
-
+//used to make a request from Blizzards API
 const request = require('request');
+
+console.log(armory.getToken());
 
 
 
