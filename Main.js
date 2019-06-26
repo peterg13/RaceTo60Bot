@@ -13,10 +13,9 @@ const client = new Discord.Client();
 var Blizzard = require('./blizzardAPI.js');
 //Referance to our Blizzard API to request from Blizzard
 var armory = new Blizzard(blizzardAuth.ID, blizzardAuth.Secret);
-//used to make a request from Blizzards API
-const request = require('request');
 
-console.log(armory.getToken());
+
+console.log(armory.requestCharacter());
 
 
 
@@ -27,10 +26,7 @@ client.on('ready', () => {
 
   //what happens when a message is received
 client.on('message', message => {
-    request('https://us.api.blizzard.com/wow/character/Darkspear/Tankadinn?locale=en_US&access_token=USmq2wyVx6hUO2Vm7ZGKwarSLVZTBU01cd', { json: true }, (err, res, body) => {
-    if (err) { return console.log(err); }
-    console.log(body);
-});
+    
   });
 
 //logs the client in
