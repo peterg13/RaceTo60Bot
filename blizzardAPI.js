@@ -43,12 +43,20 @@ class Blizzard {
         return this.getMyToken().then(this.oauth2.accessToken);
     };
 
-    requestCharacter(){
+    callAPICharacter(callback){
         request('https://us.api.blizzard.com/wow/character/Darkspear/Tankadinn?locale=en_US&access_token=USL5raWFE2cyl28C62h5QQdGDIXkXgE6aq', { json: true }, (err, res, body) => {
         if (err) { return console.log(err); }
-        return body;
+        else{
+        console.log(body)
+        callback(body);}
         });
-    }  
+    };  
+
+    requestCharacter(){
+        this.callAPICharacter(function(body){
+            return body;
+        })
+    }
 };
 
 module.exports = Blizzard;
