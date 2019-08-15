@@ -22,6 +22,8 @@ console.log(armory.requestCharacter());
 //logs that the bot is logged in
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    //announces on Discord that the bot is online
+    client.channels.get('415954951630618633').send('Classic Bot Online!');
 });
 
   //what happens when a message is received
